@@ -7,13 +7,15 @@ const {
     updateAppointmentById ,
     getAppointmentByUserId
 } = require("../controllers/appointment");
+const authentication = require("../middlewares/authentication");
+const authorization = require("../middlewares/authorization");
 
 
 
 appointmentsRouter.post("/", createNewAppointment);
 appointmentsRouter.get("/", getAllAppointments);
 appointmentsRouter.delete("/:id", deleteAppointmentById);
-appointmentsRouter.put("/:id", updateAppointmentById);
+appointmentsRouter.put("/:id", authentication , authorization('ADD'), updateAppointmentById);
 appointmentsRouter.get("/:id", getAppointmentByUserId);
 
 module.exports = appointmentsRouter;

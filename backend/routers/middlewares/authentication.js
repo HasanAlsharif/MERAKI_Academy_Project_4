@@ -9,9 +9,11 @@ const authentication = (req, res, next) => {
     const token = req.headers.authorization.split(" ").pop();
 
     const parsedToken = jwt.verify(token, process.env.SECRET);
-
-    req.token = parsedToken;
-
+    
+    req.token = parsedToken; 
+    console.log("auhtintcation ok :")
+    console.log("req.token : " , req.token)
+    console.log(req.token.Role) 
     next();
   } catch (error) {
     res.status(403).json({ message: "forbidden" });
@@ -19,3 +21,4 @@ const authentication = (req, res, next) => {
 };
 
 module.exports = authentication;
+ 

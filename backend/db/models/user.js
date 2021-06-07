@@ -10,7 +10,7 @@ const users = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     gender: { type: String},
-    role: { type: mongoose.Schema.ObjectId, ref: "Role" }
+    role: { type: mongoose.Schema.ObjectId, ref: "Role" ,default: '60bcc46321632f1ff027bedc' }
     // ,default: '60bbe9fcc56765527849a976' user role _id
 });
 
